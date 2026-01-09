@@ -13,8 +13,8 @@
     </head>
     <body>
                <h1>Bang dieu khien</h1>
-        Tinh nang 1 <br/>
-        Tinh nang 2 <br/>
-        Tinh nang 3 <br/>
+        Option 1 <br/>
+        Option 2 <br/>
+        Option 3 <br/>
     </body>
 </html>
