@@ -15,14 +15,14 @@ import utils.DbUtils;
  * @author AngDeng
  */
 public class UserDAO {
-public ArrayList<UserDTO> list =new ArrayList<>();
 
+    public ArrayList<UserDTO> list = new ArrayList<>();
 
-public UserDAO(){
+    public UserDAO() {
+    }
 
-}
-public UserDTO searchById(String username){
-  try {
+    public UserDTO searchById(String username) {
+        try {
             Connection conn = DbUtils.getConnection();
             String sql = "SELECT * FROM tblUsers "
                     + " WHERE userID='" + username + "'";
@@ -42,15 +42,16 @@ public UserDTO searchById(String username){
             
             return user;
         } catch (Exception e) {
+            return null;
+        }
+    }
 
+    public UserDTO login(String username, String password) {
+        UserDTO u = searchById(username);
+        if (u != null && u.getPassword().equals(password)) {
+            return u;
+        }
+        return null;
+    }
 
-    return null;
-}
-}
-public UserDTO login(String username, String password){
-    UserDTO u = searchById(username);
-    if(u!= null && u.getPassword().equals(password)){
-        return u;}
-    return null;
-}
 }
