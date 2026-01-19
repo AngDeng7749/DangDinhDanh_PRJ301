@@ -14,7 +14,7 @@ import utils.DbUtils;
 
 /**
  *
- * @author Hao
+ * @author AngDeng
  */
 public class UserDAO {
     public ArrayList<UserDTO> list = new ArrayList<>();

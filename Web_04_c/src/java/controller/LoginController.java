@@ -17,7 +17,7 @@ import model.UserDTO;
 
 /**
  *
- * @author Hao
+ * @author AngDeng
  */
 public class LoginController extends HttpServlet {
 

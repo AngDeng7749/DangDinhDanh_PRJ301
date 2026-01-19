@@ -18,7 +18,7 @@ import model.UserDTO;
 /**
  * s
  *
- * @author Hao
+ * @author AngDeng
  */
 public class MainController extends HttpServlet {
 
