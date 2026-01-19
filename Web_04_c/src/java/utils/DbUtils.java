@@ -35,7 +35,7 @@ public class DbUtils {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DbUtils.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(DbUtils.class.getName()).log(Level.SEVERE, null, ex); 
+            Logger.getLogger(DbUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

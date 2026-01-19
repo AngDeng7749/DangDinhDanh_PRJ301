@@ -1,7 +1,7 @@
 <%-- 
-    Document   : b.jsp
-    Created on : 08-01-2026, 11:16:06
-    Author     : AngDeng
+    Document   : b
+    Created on : Jan 8, 2026, 2:05:44 PM
+    Author     : Hao
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Dang nhap that bai! Sai username hoac password.</h1>
+        <h1>Dang nhap that bai! Sai username hoac password</h1>
     </body>
 </html>

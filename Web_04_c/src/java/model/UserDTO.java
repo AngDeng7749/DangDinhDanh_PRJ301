@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author AngDeng
+ * @author Hao
  */
 public class UserDTO {
 
@@ -25,6 +25,11 @@ public class UserDTO {
         this.password = password;
         this.roleID = roleID;
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" + "userID=" + userID + ", fullName=" + fullName + ", password=" + password + ", roleID=" + roleID + ", status=" + status + '}';
     }
 
     public String getUserID() {

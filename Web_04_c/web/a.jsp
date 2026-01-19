@@ -1,7 +1,7 @@
 <%-- 
-    Document   : a.jsp
-    Created on : 08-01-2026, 11:15:32
-    Author     : AngDeng
+    Document   : a
+    Created on : Jan 8, 2026, 2:03:06 PM
+    Author     : Hao
 --%>
 
 <%@page import="model.UserDTO"%>
@@ -13,18 +13,19 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
+       <%
             UserDTO u = (UserDTO)session.getAttribute("user");
-            if (u!=null){
+            if (u!=null){       
         %>
-        <h1>Welcome, <%=u.getFullName()%> </h1>
-        <h2>Bang dieu khien</h2>
-        Tinh nang 1 <br/>
-        Tinh nang 2 <br/>
-        Tinh nang 3 <br/>
-        <% } else{
-           response.sendRedirect("login.jsp");
-}
+                <h1>Welcome, <%=u.getFullName()%> </h1>
+                <a href="MainController?action=logout&">Logout</a>
+                <h2>Bang dieu khien</h2>
+                Tinh nang 1 <br/>
+                Tinh nang 2 <br/>
+                Tinh nang 3 <br/>
+        <%  } else {
+                response.sendRedirect("login.jsp");
+            }
         %>
     </body>
 </html>

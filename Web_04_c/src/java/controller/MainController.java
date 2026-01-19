@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,8 +16,9 @@ import model.UserDAO;
 import model.UserDTO;
 
 /**
+ * s
  *
- * @author AngDeng
+ * @author Hao
  */
 public class MainController extends HttpServlet {
 
@@ -30,26 +31,28 @@ public class MainController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        // default: show login page
-        String url = "login.jsp";
-         
-        // use null-safe comparison
-        if ("login".equals(action)) {
-            url = "LoginController";
-        } else if ("logout".equals(action)) {
-            url = "LogoutController";
-        }
-        
-        // Chuyen trang
-        RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
-        
-    }
+        response.setContentType("text/html;charset=UTF-8");
+       
+            /* TODO output your page here. You may use following sample code. */
+            String action = request.getParameter("action");
+            String url = "login.jsp";  // Mặc định về trang login
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+            if ("login".equals(action)) {
+                url = "LoginController";
+            } else if ("logout".equals(action)) {
+                url = "LogoutController";
+            }
+
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
+
+        }
+
+    
+
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
