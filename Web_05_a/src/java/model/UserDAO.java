@@ -23,7 +23,7 @@ public class UserDAO {
     public UserDTO searchById(String username){
         try {
             Connection conn = DbUtils.getConnection();
-            String sql = "SELECT * FROM tblUsers"+"Where userID=?";
+            String sql = "SELECT * FROM tblUsers Where userID=?";
             System.out.println(sql);
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, username);

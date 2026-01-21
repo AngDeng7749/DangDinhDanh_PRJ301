@@ -4,6 +4,7 @@
  */
 package controller;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -43,14 +44,21 @@ public class LoginController extends HttpServlet {
             UserDTO user = udao.login(txtUsername, txtPassword);
             System.out.println(user);
             if (user != null) {
+                if(user.isStatus() == true){
                 url = "a.jsp";
                 session.setAttribute("user", user);
-            } else {
+
+       }else {
+ 
+     url = "403.jsp"; }
+ 
+} else {
                 url = "login.jsp";
                 request.setAttribute("message", "Invalid username or password!");
             }
 
-        } else {
+
+        }    else {
             url = "a.jsp";
         }
         // Chuyen trang

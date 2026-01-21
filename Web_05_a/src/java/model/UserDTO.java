@@ -13,18 +13,14 @@ public class UserDTO {
     private String fullName;
     private String password;
     private String roleID;
+    private boolean status;
 
-    public UserDTO(String userID, String fullName, String password, String roleID, String status) {
+    public UserDTO(String userID, String fullName, String password, String roleID, boolean status) {
         this.userID = userID;
         this.fullName = fullName;
         this.password = password;
         this.roleID = roleID;
         this.status = status;
-    }
-    private String status;
-
-    UserDTO(String userID, String fullName, String password, String roleID, boolean status) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String getUserID() {
@@ -59,12 +55,14 @@ public class UserDTO {
         this.roleID = roleID;
     }
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
-    
+
+
+   
 }
