@@ -12,7 +12,7 @@ import utils.DbUtils;
 
 /**
  *
- * @author tungi
+ * @author AngDeng
  */
 public class UniversityDAO {
 
