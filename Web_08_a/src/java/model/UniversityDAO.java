@@ -93,4 +93,18 @@ public class UniversityDAO {
         return filterByColum("name", name);
     }
 
+    public boolean softDelete(String id) {
+        int result = 0;
+        try {
+            Connection conn = DbUtils.getConnection();
+            String sql = "UPDATE tblUniversity SET status=0 WHERE id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            result = ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result>0;
+    }
+
 }

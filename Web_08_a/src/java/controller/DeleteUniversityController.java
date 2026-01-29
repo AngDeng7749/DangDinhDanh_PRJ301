@@ -5,17 +5,20 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.UniversityDAO;
+import model.UniversityDTO;
 
 /**
  *
  * @author AngDeng
  */
-public class MainController extends HttpServlet {
+public class DeleteUniversityController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,28 +32,40 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-    response.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-
-            /* TODO output your page here. You may use following sample code. */
-            String action =request.getParameter("action");
-            String url ="login";
-             
-        if(action.equals("login")){
-            url = "LoginController";
-        }else if(action.equals("logout")){
-            url = "LogoutController";
-        }else if(action.equals("search")){
-            url = "SearchController";
-              }else if(action.equals("deleteUniversity")){
-            url = "DeleteUniversityController";
-        
+        String keywords = request.getParameter("keywords");
+        String id = request.getParameter("id");
+        if (keywords == null) {
+            keywords = "";
         }
-        
+        if (id == null) {
+            id = "";
+        }
+
+        System.out.println(keywords);
+        UniversityDAO udao = new UniversityDAO();
+        // Xoa
+        if (!id.isEmpty()) {
+            boolean check = udao.softDelete(id);
+            if(check)
+                request.setAttribute("msg", "Deleted!");
+            else
+                request.setAttribute("msg", "Error, can not delete: "+id);
+        }
+
+        // Tim kiem
+        ArrayList<UniversityDTO> list = new ArrayList<>();
+        if (keywords.trim().length() > 0) {
+            list = udao.filterByName(keywords);
+        }
+        request.setAttribute("list", list);
+        request.setAttribute("keywords", keywords);
+        String url = "search.jsp";
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
-        
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
