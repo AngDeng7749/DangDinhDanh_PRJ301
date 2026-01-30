@@ -5,6 +5,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,7 @@ import model.UserDTO;
 
 /**
  *
- * @author AngDeng
+ * @author Ang Deng 
  */
 public class LoginController extends HttpServlet {
 
@@ -58,6 +59,7 @@ public class LoginController extends HttpServlet {
         } else {
             url = "welcome.jsp";
         }
+        // Chuyen trang
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
     }

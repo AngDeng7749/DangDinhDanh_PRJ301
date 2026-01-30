@@ -12,7 +12,7 @@ import utils.DbUtils;
 
 /**
  *
- * @author AngDeng
+ * @author Ang Deng
  */
 public class UniversityDAO {
 
@@ -53,7 +53,7 @@ public class UniversityDAO {
         ArrayList<UniversityDTO> result = new ArrayList<>();
         try {
             Connection conn = DbUtils.getConnection();
-            String sql = "SELECT * FROM tblUniversity WHERE " + column + " LIKE ?";
+            String sql = "SELECT * FROM tblUniversity WHERE status=1 AND " + column + " LIKE ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, "%" + value + "%");
             System.out.println(ps.toString());

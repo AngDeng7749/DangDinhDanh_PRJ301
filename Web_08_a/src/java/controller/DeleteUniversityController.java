@@ -5,6 +5,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +17,7 @@ import model.UniversityDTO;
 
 /**
  *
- * @author AngDeng
+ * @author Ang Deng
  */
 public class DeleteUniversityController extends HttpServlet {
 
@@ -45,7 +46,7 @@ public class DeleteUniversityController extends HttpServlet {
 
         System.out.println(keywords);
         UniversityDAO udao = new UniversityDAO();
-        // Xoa
+     
         if (!id.isEmpty()) {
             boolean check = udao.softDelete(id);
             if(check)
@@ -54,7 +55,7 @@ public class DeleteUniversityController extends HttpServlet {
                 request.setAttribute("msg", "Error, can not delete: "+id);
         }
 
-        // Tim kiem
+       
         ArrayList<UniversityDTO> list = new ArrayList<>();
         if (keywords.trim().length() > 0) {
             list = udao.filterByName(keywords);

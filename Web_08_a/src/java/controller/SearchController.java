@@ -17,7 +17,7 @@ import model.UniversityDTO;
 
 /**
  *
- * @author AngDeng
+ * @author Ang Deng
  */
 public class SearchController extends HttpServlet {
 

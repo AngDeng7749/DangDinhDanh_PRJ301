@@ -43,6 +43,7 @@
                             <th>Students</th>
                             <th>Faculties</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -63,11 +64,11 @@
                                 </c:if>
                             </td>
                             <td>
-                                <form action="MainController" method ="POST"
-                                    onsubmit="return confirm('Bạn có chắc chắn muốn xoá trường đại học này không?');">
-                                    <input type="hidden" name="action" value="deleteUniversity"/>
+                                <form action="MainController" method="POST"
+                                      onsubmit="return confirm('Bạn có chắc chắn muốn xóa trường đại học này không?');">
+                                    <input type="hidden" name="action" value="DeleteUniversity"/>
                                     <input type="hidden" name="id" value="${u.id}"/>
-                                    <input type="hidden" name="keywords" value="${keywords}"/>  
+                                    <input type="hidden" name="keywords" value="${keywords}"/>
                                     <input type="submit" value="Delete"/>
                                 </form>
                             </td>

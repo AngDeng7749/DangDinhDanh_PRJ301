@@ -5,15 +5,19 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.UserDAO;
+import model.UserDTO;
 
 /**
  *
- * @author AngDeng
+ * @author Ang Deng
  */
 public class MainController extends HttpServlet {
 
@@ -29,28 +33,27 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-    response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-
-            /* TODO output your page here. You may use following sample code. */
-            String action =request.getParameter("action");
-            String url ="login";
-             
+        response.setCharacterEncoding("UTF-8");
+        
+        String action = request.getParameter("action");
+        String url = "login.jsp";
+         
         if(action.equals("login")){
             url = "LoginController";
         }else if(action.equals("logout")){
             url = "LogoutController";
         }else if(action.equals("search")){
             url = "SearchController";
-              }else if(action.equals("deleteUniversity")){
+        }else if(action.equals("DeleteUniversity")){
             url = "DeleteUniversityController";
-        
         }
         
+        // Chuyen trang
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
         
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

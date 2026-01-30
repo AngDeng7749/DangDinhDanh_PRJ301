@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author AngDeng
+ * @author tungi
  */
 public class LogoutController extends HttpServlet {
 
@@ -29,15 +29,16 @@ public class LogoutController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         if(session.getAttribute("user")!=null){
+            // huy bo toan bo noi dung session
             session.invalidate();
         }
         String url = "login.jsp";
         response.sendRedirect(url);
-    
-        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
