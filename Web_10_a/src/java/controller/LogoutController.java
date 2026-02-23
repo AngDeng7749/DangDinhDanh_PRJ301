@@ -6,22 +6,17 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.UniversityDAO;
-import model.UniversityDTO;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author AngDeng
+ * @author Ang Deng
  */
-@WebServlet(name = "DeleteUniversityController", urlPatterns = {"/DeleteUniversityController"})
-public class DeleteUniversityController extends HttpServlet {
+public class LogoutController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,39 +29,15 @@ public class DeleteUniversityController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-        String keywords = request.getParameter("keywords");
-        String id = request.getParameter("id");
-        if (keywords == null) {
-            keywords = "";
+        HttpSession session = request.getSession();
+        if(session.getAttribute("user")!=null){
+            // huy bo toan bo noi dung session
+            session.invalidate();
         }
-        if (id == null) {
-            id = "";
-        }
-
-        System.out.println(keywords);
-        UniversityDAO udao = new UniversityDAO();
-     
-        if (!id.isEmpty()) {
-            boolean check = udao.softDelete(id);
-            if(check)
-                request.setAttribute("msg", "Deleted!");
-            else
-                request.setAttribute("msg", "Error, can not delete: "+id);
-        }
-
-       
-        ArrayList<UniversityDTO> list = new ArrayList<>();
-        if (keywords.trim().length() > 0) {
-            list = udao.filterByName(keywords);
-        }
-        request.setAttribute("list", list);
-        request.setAttribute("keywords", keywords);
-        String url = "search.jsp";
-        RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
+        String url = "login.jsp";
+        response.sendRedirect(url);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
