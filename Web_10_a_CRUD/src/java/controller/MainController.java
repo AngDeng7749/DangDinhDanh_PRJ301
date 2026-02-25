@@ -19,7 +19,7 @@ import model.UserDTO;
  *
  * @author AngDeng
  */
-public class LoginController extends HttpServlet {
+public class MainController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,36 +32,30 @@ public class LoginController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        String url = "";
-        HttpSession session = request.getSession();
-        if (session.getAttribute("user") == null) {
-            String txtUsername = request.getParameter("txtUsername");
-            String txtPassword = request.getParameter("txtPassword");
-
-            UserDAO udao = new UserDAO();
-            UserDTO user = udao.login(txtUsername, txtPassword);
-            System.out.println(user);
-            if (user != null) {
-                if (user.isStatus()) {
-                    url = "welcome.jsp";
-                    session.setAttribute("user", user);
-                } else {
-                    url = "e403.jsp";
-                }
-            } else {
-                url = "login.jsp";
-                request.setAttribute("message", "Invalid username or password!");
-            }
-
-        } else {
-            url = "welcome.jsp";
+        
+        String action = request.getParameter("action");
+        String url = "login";
+         
+        if(action.equals("login")){
+            url = "LoginController";
+        }else if(action.equals("logout")){
+            url = "LogoutController";
+        }else if(action.equals("search")){
+            url = "SearchController";
+        }else if(action.equals("deleteUniversity")){
+            url = "DeleteUniversityController";
+        }else if(action.equals("addUniversity")){
+            url = "AddUniversityController";
+        }else if(action.equals("updateUniversity") ||action.equals("saveUpdateUniversity")  ){
+            url = "UpdateUniversityController";
         }
+        
         // Chuyen trang
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

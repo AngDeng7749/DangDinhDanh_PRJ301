@@ -1,4 +1,4 @@
-﻿USE [master]
+USE [master]
 GO
 -- 0. Xóa Database PRJ30x_DB1 nếu đã tồn tại trong DBMS --------------------
 IF EXISTS (

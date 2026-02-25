@@ -60,7 +60,10 @@ public class AddUniversityController extends HttpServlet {
             if (name.isEmpty()) {
                 error += ("Chua nhap Name <br/>");
             }
-
+            /*
+            Bat them loi khac
+            */
+            
             UniversityDAO udao = new UniversityDAO();
             UniversityDTO u = udao.searchByID(id);
             if (u != null) {
@@ -97,7 +100,7 @@ public class AddUniversityController extends HttpServlet {
                 error += ("So nguyen duong phai la so nguyen!<br/>");
             }
             
-            boolean isDraft = (s_isDraft.equals("1"))?true:false;
+            boolean isDraft = (s_isDraft.equals("on"))?true:false;
             
             u = new UniversityDTO(id, name, shortName, description, foundedYear, address, city, region, type, totalStudents, totalFaculties, isDraft);
             if(error.isEmpty()){
@@ -105,7 +108,7 @@ public class AddUniversityController extends HttpServlet {
                 if(udao.add(u)){
                     msg="Da them University thanh cong!";
                 }else{
-                    error="Gap loi, khong the them University!";
+                    error+="Gap loi, khong the them University!";
                     request.setAttribute("u", u);
                 }
                 request.setAttribute("msg", msg);

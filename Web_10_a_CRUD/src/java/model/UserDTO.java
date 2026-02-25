@@ -9,11 +9,15 @@ package model;
  * @author AngDeng
  */
 public class UserDTO {
+
     private String userID;
     private String fullName;
     private String password;
     private String roleID;
     private boolean status;
+
+    public UserDTO() {
+    }
 
     public UserDTO(String userID, String fullName, String password, String roleID, boolean status) {
         this.userID = userID;
@@ -63,6 +67,9 @@ public class UserDTO {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return "UserDTO{" + "userID=" + userID + ", fullName=" + fullName + ", password=" + password + ", roleID=" + roleID + ", status=" + status + '}';
+    }
 
-   
 }

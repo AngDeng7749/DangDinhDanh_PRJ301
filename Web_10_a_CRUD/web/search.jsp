@@ -16,7 +16,8 @@
         </c:if>
 
         <c:if test="${not empty user}">
-            <a href="university-form.jsp">Add</a><br/>
+            
+            <a href="university-form.jsp"> Add </a>
             <form action="MainController" method="post">
                 <input type="hidden" name="action" value="search"/>
                 Input name:
@@ -60,7 +61,7 @@
                             <td>${u.totalFaculties}</td>
                             <td>
                                 <c:if test="${u.isDraft}">
-                                    <input type="submit" value="Update"/>
+                                    <a href="MainController?action=updateUniversity&id=${u.id}"/>Update</a>
                                 </c:if>
                             </td>
                             <td>

@@ -19,7 +19,7 @@ import model.UniversityDTO;
  *
  * @author AngDeng
  */
-public class DeleteUniversityController extends HttpServlet {
+public class SearchController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,26 +36,12 @@ public class DeleteUniversityController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         String keywords = request.getParameter("keywords");
-        String id = request.getParameter("id");
         if (keywords == null) {
             keywords = "";
-        }
-        if (id == null) {
-            id = "";
         }
 
         System.out.println(keywords);
         UniversityDAO udao = new UniversityDAO();
-     
-        if (!id.isEmpty()) {
-            boolean check = udao.softDelete(id);
-            if(check)
-                request.setAttribute("msg", "Deleted!");
-            else
-                request.setAttribute("msg", "Error, can not delete: "+id);
-        }
-
-       
         ArrayList<UniversityDTO> list = new ArrayList<>();
         if (keywords.trim().length() > 0) {
             list = udao.filterByName(keywords);

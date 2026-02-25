@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Ang Deng
+ * @author AngDeng
  */
 public class UniversityDTO {
     private String id, name, shortName, description;

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : 403
-    Created on : Jan 19, 2026, 12:19:07 PM
+    Document   : e303.jsp
+    Created on : 22-01-2026, 09:45:36
     Author     : AngDeng
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bi Ban R Kid</h1>
+        <h1>403 - Access Denied! </h1>
     </body>
 </html>
